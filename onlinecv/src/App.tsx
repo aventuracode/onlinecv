@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import CVForm from './components/CVFormik';
 import CVPreview from './components/CVPreview';
 import { PDFDownloadLink } from '@react-pdf/renderer';
+import CVPreview2 from './components/CVPreview2';
 
 interface CVData {
-  // Define the structure of your CV data here
-  // For example:
   name: string;
   email: string;
-  // Add other fields as needed
+  phone: string;
 }
 
 const App: React.FC = () => {
@@ -18,14 +17,22 @@ const App: React.FC = () => {
     setCvData(data);
   };
 
+  const datacv= {
+    name: 'ariel',
+    email: 'venturaq@gmai.com',
+    phone: '381555555'
+  }
+
   return (
     <div>
-      <CVForm onSubmit={handleFormSubmit} />
-      {cvData && (
-        <PDFDownloadLink document={<CVPreview data={cvData} />} fileName="cprueba.pdf">
+      {/* <CVForm onSubmit={handleFormSubmit} /> */}
+      
+      {/* {cvData && ( */}
+        {/* <PDFDownloadLink document={<CVPreview data={cvData} />} fileName="cprueba.pdf"> */}
+        <PDFDownloadLink document={<CVPreview2 />} fileName="cprueba.pdf">
           {({ loading }) => (loading ? 'Generando PDF...' : 'Descargar PDF')}
         </PDFDownloadLink>
-      )}
+      {/* )} */}
     </div>
   );
 };
